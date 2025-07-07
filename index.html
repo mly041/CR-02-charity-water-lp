@@ -1,47 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charity:Water | Activism That Works</title>
+
+  <!-- ❶ FONTS
+       Proxima Nova isn’t freely hosted, so this page uses Montserrat as a close
+       stand‑in.  Swap the @font‑face below with your self‑hosted Proxima files
+       (or remove it if you’ll import the font another way). -->
+  <style>
+    /* === Proxima Nova stand‑in === */
+    @font-face {
+      font-family: "Proxima Nova";
+      src: local("Montserrat");
+      font-display: swap;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- ❷ GLOBAL STYLES -->
+  <style>
+    :root {
+      /* brand palette */
+      --brand-yellow: #ffc907;
+      --brand-orange: #f7a11b;
+      --brand-navy: #003366;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Merriweather", serif;
+      line-height: 1.55;
+      color: #fff;
+      background: #fafafa;
+    }
+
+    /* === Header === */
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+   
+    .logo {
+      display: flex;
+      align-items: center;
+      font-family: "Proxima Nova", "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--brand-navy);
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 0.5rem;
+    }
+
+    .top-cta {
+      background: var(--brand-orange);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-family: "Proxima Nova", "Montserrat", sans-serif;
+      cursor: pointer;
+      transition: opacity 0.25s ease;
+    }
+
+    .top-cta:hover {
+      opacity: 0.9;
+    }
+
+    /* === Hero === */
+    .hero {
+      min-height: 125vh;
+      background: url("img/picture.jpg") center / cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      /* Add padding for small screens */
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    .hero::before {
+      /* dark overlay */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-content {
+      position: relative; /* keeps the text above the overlay */
+      max-width: 600px;
+      padding: 0 6%;
+      margin-top: -160px; /* This moves the text up */
+      /* You can change -160px to a different number if you want */
+    }
+
+    h1 {
+      font-family: "Proxima Nova", "Montserrat", sans-serif;
+      font-size: 2.5rem;
+      line-height: 1.1;
+      color: var(--brand-orange);
+      margin-bottom: 1rem;
+    }
+
+    .subheadline {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      max-width: 38ch;
+    }
+
+    .cta {
+      background: var(--brand-orange);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-family: "Proxima Nova", "Montserrat", sans-serif;
+      cursor: pointer;
+      transition: opacity 0.25s ease;
+    }
+
+    .cta:hover {
+      opacity: 0.9;
+    }
+
+    /* === Responsive tweaks === */
+    @media (max-width: 600px) {
+      /* Make header stack vertically on small screens */
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      .logo {
+        font-size: 1rem;
+      }
+      .logo img {
+        height: 32px;
+        margin-right: 0.5rem;
+      }
+      .top-cta {
+        margin-top: 0.5rem;
+        width: 100%;
+        padding: 0.75rem 0;
+        font-size: 1rem;
+      }
+      .hero {
+        min-height: 80vh; /* Reduce height for small screens */
+        padding-top: 60px;
+        padding-bottom: 20px;
+      }
+      .hero-content {
+        margin-top: 0; /* Remove negative margin for mobile */
+        padding: 0 4%;
+        max-width: 100%;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .subheadline {
+        font-size: 1rem;
+      }
+      .cta {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.75rem 0;
+      }
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <!-- logo -->
+    <a class="logo" href="#">
+      <img src="img/jerrycan.png" alt="Charity Water Jerrycan Logo" />
+      Charity:Water
+    </a>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+    <!-- small CTA in nav -->
+    <button class="top-cta">Fuel the Change</button>
+  </header>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
-
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Activism That Works. Water That Lasts.</h1>
+      <p class="subheadline">
+        Join a global network of changemakers bringing clean water to the people
+        who need it most — and see your impact clearly.
+      </p>
+      <button class="cta">Fuel the Change</button>
+    </div>
+  </section>
 </body>
 </html>
+
+<style>
+  :root {
+    /* brand palette */
+    --brand-yellow: #ffd24c;
+    --brand-orange: #f7a11b;
+    --brand-navy: #002f5f;
+    --brand-beige: #fff7e6;  /* NEW: beige strip color */
+  }
+
+  /* === Header === */
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    background: var(--brand-beige);  /* <<— beige strip across the top */
+  }
+</style>

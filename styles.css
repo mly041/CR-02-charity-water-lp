@@ -2,10 +2,10 @@
 
 Primary Colors:
 - Yellow:     #FFC907
-- Blue:       #2E9DF7
+- Blue:       #003366
 
 Secondary Colors:
-- Light Blue: #8BD1CB
+- Light Blue: #77A8BB
 - Green:      #4FCB53
 - Orange:     #FF902A
 - Red:        #F5402C
@@ -25,6 +25,17 @@ Fonts:
 
 /* Set up the main font and background color for the whole page */
 body {
+  /* Use the image as the background */
+  background-image: url('img/picture.jpg');
+  /* Make the background cover the whole page */
+  background-size: cover;
+  /* Center the background image */
+  background-position: center;
+  /* Keep the background fixed when scrolling */
+  background-attachment: fixed;
+  /* Add a light color overlay for readability (optional) */
+  background-repeat: no-repeat;
+
   background-color: #f4f8fb; /* Soft light blue for a fresh look */
   font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
   margin: 0;
